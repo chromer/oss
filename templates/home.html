@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+	{% if stores.exists %}
+		<h3>
+			<a href="javascript:;">
+				<i class="icon-minus" onclick="toggle('stores', this);"></i>
+			</a>
+			<big>Stores</big>
+			<small><a href="#">(All stores)</a></small>
+		</h3>
+		<div class="row" id="stores">
+		{% for store in stores %}
+			<div class="span2 well">
+			<h2>{{ store.name }}</h2>
+			</div>
+		{% endfor %}
+		</div>
+	{% endif %}
+	<hr />
+	{% if brands.exists %}
+		<h3>
+			<a href="javascript:;">
+				<i class="icon-minus" onclick="toggle('brands', this);"></i>
+			</a>
+			<big>Brands</big>
+			<small><a href="#">(All stores)</a></small>
+		</h3>
+		<div class="row" id="brands">
+		{% for brand in brands %}
+			<div class="span2 well">
+			<h2>{{ brand.name }}</h2>
+			</div>
+		{% endfor %}
+		</div>
+	{% endif %}
+	<hr />
+	{% if products.exists %}
+		<h3>
+			<a href="javascript:;">
+				<i class="icon-minus" onclick="toggle('products', this);"></i>
+			</a>
+			<big>Products</big>
+			<small><a href="#">(All stores)</a></small>
+		</h3>
+		<div class="row" id="products">
+		{% for product in products %}
+			<div class="span2 well">
+			<h2>{{ product.name }}</h2>
+			</div>
+		{% endfor %}
+		</div>
+	{% endif %}
+	<hr />
+	<script type="text/javascript">
+		function toggle(id, obj) {
+			$('#'+id).slideToggle('slow');
+			if($(obj).attr('class')=='icon-minus'){
+				$(obj).attr('class', 'icon-plus');
+			}else {
+				$(obj).attr('class', 'icon-minus');
+			}
+		}
+	</script>
+{% endblock content %}
